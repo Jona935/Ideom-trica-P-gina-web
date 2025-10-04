@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 
-const COLOURS = ['#0000c7', '#0000d2', '#0000dc', '#0000e6', '#0000f0'];
+const COLOURS = ['#ff6f61', '#ffb74d', '#4db6ac', '#4fc3f7', '#9575cd'];
 
 export function EtherealCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -25,7 +25,6 @@ export function EtherealCanvas() {
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       ctx.scale(dpr, dpr);
-      // We don't clear the canvas anymore, so no fillRect here.
     };
 
     setCanvasDimensions();
@@ -85,7 +84,7 @@ export function EtherealCanvas() {
 
   return (
     <>
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full bg-black" />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full bg-background" />
     </>
   );
 }
