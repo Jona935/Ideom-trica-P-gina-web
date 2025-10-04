@@ -16,48 +16,44 @@ export function EtherealCanvas() {
   const lastMousePos = useRef({ x: -100, y: -100 });
   const lastDrawPos = useRef<{ x: number; y: number } | null>(null);
   const brushRadius = useRef(MAX_BRUSH_SIZE);
-  const points = useRef<{ x: number; y: number }[]>([]);
+  const points = useRef<{ x: number; y: number; speed: number }[]>([]);
 
-
-  const drawBrushStroke = () => {
-    const canvas = canvasRef.current;
-    if (!canvas || points.current.length < 2) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+  const drawBrushStroke = (ctx: CanvasRenderingContext2D) => {
+    if (points.current.length < 2) {
+      return;
+    }
 
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
 
-    const p1 = points.current[0];
-    const p2 = points.current[1];
+    let p1 = points.current[0];
+    let p2 = points.current[1];
 
     ctx.beginPath();
     ctx.moveTo(p1.x, p1.y);
 
     for (let i = 1; i < points.current.length; i++) {
-        const midPoint = {
-            x: (points.current[i - 1].x + points.current[i].x) / 2,
-            y: (points.current[i - 1].y + points.current[i].y) / 2
-        };
-        ctx.quadraticCurveTo(points.current[i - 1].x, points.current[i - 1].y, midPoint.x, midPoint.y);
-        
-        const speed = Math.hypot(points.current[i].x - points.current[i - 1].x, points.current[i].y - points.current[i - 1].y);
-        const radius = Math.max(MIN_BRUSH_SIZE, MAX_BRUSH_SIZE - speed * BRUSH_DECAY_RATE);
+      const midPoint = {
+        x: (p1.x + p2.x) / 2,
+        y: (p1.y + p2.y) / 2,
+      };
+      
+      const radius = Math.max(MIN_BRUSH_SIZE, MAX_BRUSH_SIZE - p1.speed * BRUSH_DECAY_RATE);
+      ctx.lineWidth = radius * 2;
+      
+      const gradient = ctx.createRadialGradient(midPoint.x, midPoint.y, 0, midPoint.x, midPoint.y, radius);
+      gradient.addColorStop(0, "rgba(255, 255, 255, 0.15)");
+      gradient.addColorStop(0.2, "rgba(255, 255, 255, 0.1)");
+      gradient.addColorStop(0.7, "rgba(255, 165, 0, 0.05)");
+      gradient.addColorStop(1, "rgba(255, 165, 0, 0)");
+      ctx.strokeStyle = gradient;
 
-        ctx.lineWidth = radius * 2;
-        
-        const gradient = ctx.createRadialGradient(midPoint.x, midPoint.y, 0, midPoint.x, midPoint.y, radius);
-        gradient.addColorStop(0, "rgba(255, 255, 255, 0.15)");
-        gradient.addColorStop(0.2, "rgba(255, 255, 255, 0.1)");
-        gradient.addColorStop(0.7, "rgba(255, 165, 0, 0.05)");
-        gradient.addColorStop(1, "rgba(255, 165, 0, 0)");
-        
-        ctx.strokeStyle = gradient;
-        ctx.stroke();
+      ctx.quadraticCurveTo(p1.x, p1.y, midPoint.x, midPoint.y);
+      ctx.stroke();
+
+      p1 = points.current[i];
+      p2 = points.current[i + 1];
     }
-    
-    // Keep the last point for the next frame
-    points.current = [points.current[points.current.length - 1]];
   };
 
   useEffect(() => {
@@ -65,7 +61,7 @@ export function EtherealCanvas() {
     const cursor = cursorRef.current;
     if (!canvas || !cursor) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
     const setCanvasDimensions = () => {
@@ -76,27 +72,29 @@ export function EtherealCanvas() {
       ctx.scale(dpr, dpr);
       ctx.fillStyle = "hsl(14, 80%, 50%)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      points.current = []; // Reset points on resize
+      points.current = [];
+      lastDrawPos.current = null;
     };
 
     setCanvasDimensions();
 
     const loop = () => {
-      const { x, y } = lastMousePos.current;
+      drawBrushStroke(ctx);
+      points.current = []; // Clear points after drawing each frame
       
       if (cursor) {
-          const scale = brushRadius.current / MAX_BRUSH_SIZE * 1.5 + 0.5;
-          const currentTransform = cursor.style.transform;
-          const newTransform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${scale})`;
-          
-          if(currentTransform !== newTransform) {
-              const transition = currentTransform ? 'transform 0.1s ease-out' : 'none';
-              cursor.style.transition = transition;
-              cursor.style.transform = newTransform;
-          }
+        const { x, y } = lastMousePos.current;
+        const scale = brushRadius.current / MAX_BRUSH_SIZE * 1.5 + 0.5;
+        const currentTransform = cursor.style.transform;
+        const newTransform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${scale})`;
+        
+        if(currentTransform !== newTransform) {
+            const transition = currentTransform ? 'transform 0.1s ease-out' : 'none';
+            cursor.style.transition = transition;
+            cursor.style.transform = newTransform;
+        }
       }
       
-      drawBrushStroke();
       animationFrameId.current = requestAnimationFrame(loop);
     };
 
@@ -106,15 +104,14 @@ export function EtherealCanvas() {
       }
 
       const currentPos = { x: e.clientX, y: e.clientY };
-      points.current.push(currentPos);
       
       const lastPos = lastMousePos.current || currentPos;
-      const dist = Math.hypot(currentPos.x - lastPos.x, currentPos.y - lastPos.y);
+      const speed = Math.hypot(currentPos.x - lastPos.x, currentPos.y - lastPos.y);
 
-      lastMousePos.current = currentPos;
-      const speed = Math.min(dist, 50);
-      brushRadius.current = Math.max(MIN_BRUSH_SIZE, MAX_BRUSH_SIZE - speed * BRUSH_DECAY_RATE);
+      points.current.push({ ...currentPos, speed });
       
+      lastMousePos.current = currentPos;
+      brushRadius.current = Math.max(MIN_BRUSH_SIZE, MAX_BRUSH_SIZE - speed * BRUSH_DECAY_RATE * 2);
 
       clearTimeout(mouseStopTimer.current);
       mouseStopTimer.current = setTimeout(() => {
