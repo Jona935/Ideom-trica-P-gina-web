@@ -6,14 +6,12 @@ const MAX_BRUSH_SIZE = 50;
 const MIN_BRUSH_SIZE = 10;
 const BRUSH_DECAY_RATE = 0.3;
 const MOUSE_STOP_DELAY = 100;
-const FADE_OPACITY = 0.15;
 
 export function EtherealCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const animationFrameId = useRef<number>();
   const mouseStopTimer = useRef<NodeJS.Timeout>();
-  const isDrawing = useRef(false);
 
   const lastMousePos = useRef({ x: -100, y: -100 });
   const brushRadius = useRef(MAX_BRUSH_SIZE);
@@ -48,19 +46,13 @@ export function EtherealCanvas() {
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       ctx.scale(dpr, dpr);
-      ctx.fillStyle = "hsl(14, 80%, 50%)"; // #e74c3c
+      ctx.fillStyle = "hsl(14, 80%, 50%)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
     setCanvasDimensions();
 
     const loop = () => {
-      if (!ctx) return;
-
-      // Fade effect
-      ctx.fillStyle = `rgba(231, 76, 60, ${FADE_OPACITY})`;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
       const { x, y } = lastMousePos.current;
       const radius = brushRadius.current;
       
