@@ -57,6 +57,7 @@ export function EtherealCanvas() {
       ctx.scale(dpr, dpr);
       ctx.fillStyle = "hsl(14, 80%, 50%)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      lastDrawPos.current = null; // Reset last draw position on resize
     };
 
     setCanvasDimensions();
@@ -99,7 +100,6 @@ export function EtherealCanvas() {
       clearTimeout(mouseStopTimer.current);
       mouseStopTimer.current = setTimeout(() => {
           brushRadius.current = MAX_BRUSH_SIZE;
-          lastDrawPos.current = null;
       }, MOUSE_STOP_DELAY);
     };
 
