@@ -2,14 +2,14 @@
 
 import { useRef, useEffect } from "react";
 
-const COLOURS = ['#ff6f61', '#ffb74d', '#4db6ac', '#4fc3f7', '#9575cd'];
+// The brush color will be a darker shade of the background.
+const BRUSH_COLOR = "hsl(14 80% 40%)";
 
 export function EtherealCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameId = useRef<number>();
   const lastMousePos = useRef<{ x: number; y: number } | null>(null);
   const radius = useRef(0);
-  const randomColorIndex = useRef(0);
   const startTime = useRef(Date.now());
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export function EtherealCanvas() {
       if (lastMousePos.current) {
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.strokeStyle = COLOURS[randomColorIndex.current % COLOURS.length];
+        ctx.strokeStyle = BRUSH_COLOR;
         ctx.lineWidth = radius.current;
         ctx.beginPath();
         ctx.moveTo(lastMousePos.current.x, lastMousePos.current.y);
@@ -51,10 +51,6 @@ export function EtherealCanvas() {
       
       lastMousePos.current = currentPos;
     };
-
-    const handleClick = () => {
-      randomColorIndex.current = Math.floor(Math.random() * COLOURS.length);
-    };
     
     const handleMouseOut = () => {
         lastMousePos.current = null;
@@ -62,11 +58,7 @@ export function EtherealCanvas() {
 
     window.addEventListener("resize", setCanvasDimensions);
     document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("click", handleClick);
     document.body.addEventListener("mouseleave", handleMouseOut);
-
-    // Initialize color
-    handleClick(); 
     
     // Start animation loop
     animationFrameId.current = requestAnimationFrame(loop);
@@ -74,7 +66,6 @@ export function EtherealCanvas() {
     return () => {
       window.removeEventListener("resize", setCanvasDimensions);
       document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("click", handleClick);
       document.body.removeEventListener("mouseleave", handleMouseOut);
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
