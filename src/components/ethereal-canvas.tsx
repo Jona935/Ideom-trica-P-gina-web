@@ -13,6 +13,7 @@ export function EtherealCanvas() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const animationFrameId = useRef<number>();
   const mouseStopTimer = useRef<NodeJS.Timeout>();
+  const isDrawing = useRef(false);
 
   const lastMousePos = useRef({ x: -100, y: -100 });
   const brushRadius = useRef(MAX_BRUSH_SIZE);
