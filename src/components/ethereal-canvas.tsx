@@ -17,6 +17,22 @@ export function EtherealCanvas() {
   const lastMousePos = useRef({ x: -100, y: -100 });
   const brushRadius = useRef(MAX_BRUSH_SIZE);
 
+  const drawBrushStroke = (x: number, y: number, radius: number) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    ctx.beginPath();
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 0.2)");
+    gradient.addColorStop(0.5, "rgba(255, 165, 0, 0.1)");
+    gradient.addColorStop(1, "rgba(255, 165, 0, 0)");
+    ctx.fillStyle = gradient;
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.fill();
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const cursor = cursorRef.current;
@@ -44,18 +60,9 @@ export function EtherealCanvas() {
       ctx.fillStyle = `rgba(231, 76, 60, ${FADE_OPACITY})`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw brush stroke
       const { x, y } = lastMousePos.current;
       const radius = brushRadius.current;
-      ctx.beginPath();
-      const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-      gradient.addColorStop(0, "rgba(255, 255, 255, 0.2)");
-      gradient.addColorStop(0.5, "rgba(255, 165, 0, 0.1)");
-      gradient.addColorStop(1, "rgba(255, 165, 0, 0)");
-      ctx.fillStyle = gradient;
-      ctx.arc(x, y, radius, 0, 2 * Math.PI);
-      ctx.fill();
-
+      
       // Update cursor
       const scale = radius / MAX_BRUSH_SIZE * 1.5 + 0.5;
       cursor.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${scale})`;
@@ -73,6 +80,8 @@ export function EtherealCanvas() {
 
       brushRadius.current = Math.max(MIN_BRUSH_SIZE, brushRadius.current - dist * BRUSH_DECAY_RATE);
       
+      drawBrushStroke(e.clientX, e.clientY, brushRadius.current);
+
       clearTimeout(mouseStopTimer.current);
       mouseStopTimer.current = setTimeout(() => {
           brushRadius.current = MAX_BRUSH_SIZE;
