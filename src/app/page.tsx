@@ -11,7 +11,6 @@ export default function Home() {
   const { locale } = useLanguage();
   const dict = getDictionary(locale);
   const [typedText, setTypedText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
   
   const fullTextEn = "Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.";
   const fullTextEs = "Estudio de Diseño Enfocado en arquitectura, interiorismo, construcción, avalúo inmobiliario y todo lo Creativo, liderando el territorio de México y noreste.";
@@ -20,7 +19,6 @@ export default function Home() {
 
   useEffect(() => {
     setTypedText(''); // Reset text when language changes
-    setIsTyping(true);
     let i = 0;
     const typingInterval = setInterval(() => {
       if (i < fullText.length) {
@@ -28,7 +26,6 @@ export default function Home() {
         i++;
       } else {
         clearInterval(typingInterval);
-        setIsTyping(false);
       }
     }, 100); // Slower typing speed
 
@@ -39,7 +36,7 @@ export default function Home() {
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
       <div className="absolute top-4 left-4 z-10 flex items-center space-x-4">
-        <Image src="/logo4.png" alt="Logo" width={150} height={100} />
+        <Image src="/logo4.png" alt="Logo" width={250} height={150} />
         <div className="text-foreground">
           <p className="font-headline text-lg font-bold tracking-widest">ARQ Y CO</p>
           <p className="font-headline text-sm tracking-widest">DESIGN STUDIO</p>
