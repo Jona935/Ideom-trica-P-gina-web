@@ -8,7 +8,7 @@ const BRUSH_COLOR = "#ff2a00";
 export function EtherealCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameId = useRef<number>();
-  const lastMousePos = useRef<{ x: number; y: number } | null>(null);
+  const lastPos = useRef<{ x: number; y: number } | null>(null);
   const radius = useRef(0);
   const startTime = useRef(Date.now());
 
@@ -35,30 +35,48 @@ export function EtherealCanvas() {
       animationFrameId.current = requestAnimationFrame(loop);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const currentPos = { x: e.clientX, y: e.clientY };
-
-      if (lastMousePos.current) {
+    const draw = (x: number, y: number) => {
+      if (lastPos.current) {
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.strokeStyle = BRUSH_COLOR;
         ctx.lineWidth = radius.current;
         ctx.beginPath();
-        ctx.moveTo(lastMousePos.current.x, lastMousePos.current.y);
-        ctx.lineTo(currentPos.x, currentPos.y);
+        ctx.moveTo(lastPos.current.x, lastPos.current.y);
+        ctx.lineTo(x, y);
         ctx.stroke();
       }
-      
-      lastMousePos.current = currentPos;
+      lastPos.current = { x, y };
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      draw(e.clientX, e.clientY);
     };
     
     const handleMouseOut = () => {
-        lastMousePos.current = null;
+        lastPos.current = null;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        // Prevent scrolling while drawing
+        e.preventDefault();
+        const touch = e.touches[0];
+        draw(touch.clientX, touch.clientY);
+      }
+    };
+
+    const handleTouchEnd = () => {
+      lastPos.current = null;
     };
 
     window.addEventListener("resize", setCanvasDimensions);
     document.addEventListener("mousemove", handleMouseMove);
     document.body.addEventListener("mouseleave", handleMouseOut);
+
+    // Add touch event listeners
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener("touchend", handleTouchEnd);
     
     // Start animation loop
     animationFrameId.current = requestAnimationFrame(loop);
@@ -67,6 +85,11 @@ export function EtherealCanvas() {
       window.removeEventListener("resize", setCanvasDimensions);
       document.removeEventListener("mousemove", handleMouseMove);
       document.body.removeEventListener("mouseleave", handleMouseOut);
+
+      // Clean up touch event listeners
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
+      
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
