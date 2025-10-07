@@ -93,8 +93,8 @@ export default {
           'to': { opacity: '1', transform: 'translateY(0)' },
         },
         'blink-cursor': {
-          'from, to': { borderColor: 'transparent' },
-          '50%': { borderColor: 'hsl(var(--foreground))' },
+          'from, to': { opacity: '1' },
+          '50%': { opacity: '0' },
         },
       },
       animation: {
