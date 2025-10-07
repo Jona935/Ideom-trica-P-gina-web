@@ -27,7 +27,7 @@ export default function Home() {
       } else {
         clearInterval(typingInterval);
       }
-    }, 100); // Slower typing speed
+    }, 100);
 
     return () => clearInterval(typingInterval);
   }, [fullText]);
@@ -35,11 +35,11 @@ export default function Home() {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
-      <div className="absolute top-4 left-4 z-10 flex items-center space-x-4">
-        <Image src="/logo4.png" alt="Logo" width={100} height={150} />
+      <div className="absolute top-4 left-4 z-10 flex items-center space-x-2 md:space-x-4">
+        <Image src="/logo4.png" alt="Logo" width={80} height={120} className="md:w-[100px] md:h-[150px]" />
         <div className="text-foreground">
-          <p className="font-headline text-4xl font-bold tracking-widest">Ideo</p>
-          <p className="font-headline text-4xl font-bold tracking-widest">mētrica</p>
+          <p className="font-headline text-lg md:text-xl font-bold tracking-widest">ARQ Y CO</p>
+          <p className="font-headline text-xs md:text-sm tracking-widest">DESIGN STUDIO</p>
         </div>
       </div>
       <div className="absolute top-4 right-4 z-10">
@@ -47,9 +47,9 @@ export default function Home() {
       </div>
       <EtherealCanvas />
       <div className="relative z-10 text-center text-foreground px-4 pointer-events-none max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4 min-h-[180px] md:min-h-[144px]">
+        <h1 className="text-2xl md:text-5xl font-headline font-bold mb-4 min-h-[240px] md:min-h-[144px]">
           {typedText}
-          <span className="typing-cursor">|</span>
+          <span className="typed-cursor typed-cursor--blink">|</span>
         </h1>
       </div>
     </main>
