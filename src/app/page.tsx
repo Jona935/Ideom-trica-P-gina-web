@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { EtherealCanvas } from "@/components/ethereal-canvas";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useLanguage } from "@/context/language-context";
@@ -9,6 +10,32 @@ import { getDictionary } from "@/lib/dictionaries";
 export default function Home() {
   const { locale } = useLanguage();
   const dict = getDictionary(locale);
+  const [typedText, setTypedText] = useState("");
+  
+  const fullTextEn = "Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.";
+  const fullTextEs = "Estudio de Diseño Enfocado en arquitectura, interiorismo, construcción, avalúo inmobiliario y todo lo Creativo, liderando el territorio de México y noreste.";
+
+  const fullText = locale === 'en' ? fullTextEn : fullTextEs;
+
+  useEffect(() => {
+    setTypedText(''); // Reset text when language changes
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      if (i < fullText.length) {
+        setTypedText(fullText.substring(0, i + 1));
+        i++;
+      } else {
+        clearInterval(typingInterval);
+        const cursor = document.querySelector('.typing-cursor');
+        if (cursor) {
+          cursor.classList.add('hidden');
+        }
+      }
+    }, 50);
+
+    return () => clearInterval(typingInterval);
+  }, [fullText]);
+
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
@@ -19,12 +46,16 @@ export default function Home() {
         <LanguageSwitcher />
       </div>
       <EtherealCanvas />
-      <div className="relative z-10 text-center text-foreground px-4 pointer-events-none">
+      <div className="relative z-10 text-center text-foreground px-4 pointer-events-none max-w-4xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-headline font-bold mb-4 opacity-0 animate-fade-in [animation-delay:200ms]">
           {dict.title}
         </h1>
         <p className="text-lg md:text-xl font-body opacity-0 animate-fade-in [animation-delay:400ms]">
           {dict.subtitle}
+        </p>
+        <p className="text-lg md:text-xl font-body mt-6 opacity-0 animate-fade-in [animation-delay:600ms]">
+          {typedText}
+          <span className="typing-cursor">|</span>
         </p>
       </div>
     </main>
