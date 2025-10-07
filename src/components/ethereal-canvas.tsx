@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react";
 
 // The brush color will be a darker shade of the background.
-const BRUSH_COLOR = "hsl(14 80% 40%)";
+const BRUSH_COLOR = "#ff2a00";
 
 export function EtherealCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -75,7 +75,7 @@ export function EtherealCanvas() {
 
   return (
     <>
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full bg-background" />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full bg-transparent" />
     </>
   );
 }
