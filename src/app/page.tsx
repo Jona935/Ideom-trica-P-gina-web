@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
       <div className="absolute top-4 left-4 z-10">
-        <Image src="/logo.png" alt="Logo" width={150} height={100} />
+        <Image src="/logo.png" alt="Logo" width={200} height={120} />
       </div>
       <div className="absolute top-4 right-4 z-10">
         <LanguageSwitcher />
