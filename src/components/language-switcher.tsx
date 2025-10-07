@@ -16,7 +16,12 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <Button variant="ghost" size="icon" onClick={toggleLocale} className="w-10 h-10 border border-transparent hover:border-white rounded-md text-sm font-medium">
+    <Button 
+      variant="ghost" 
+      size="icon" 
+      onClick={toggleLocale} 
+      className="w-10 h-10 border border-transparent hover:bg-transparent hover:border-white rounded-md text-sm font-medium"
+    >
       {locale === "en" ? "US" : "MX"}
       <span className="sr-only">Change language</span>
     </Button>
