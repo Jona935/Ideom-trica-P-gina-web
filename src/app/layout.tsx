@@ -3,8 +3,8 @@ import './globals.css';
 import { LanguageProvider } from '@/context/language-context';
 
 export const metadata: Metadata = {
-  title: 'Ethereal Canvas',
-  description: 'An interactive art experience created with Next.js and Canvas.',
+  title: 'Ideomētrica',
+  description: 'Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.',
 };
 
 export default function RootLayout({
