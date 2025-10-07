@@ -31,7 +31,7 @@ export default function Home() {
           cursor.classList.add('hidden');
         }
       }
-    }, 50);
+    }, 100); // Slower typing speed
 
     return () => clearInterval(typingInterval);
   }, [fullText]);
@@ -47,16 +47,10 @@ export default function Home() {
       </div>
       <EtherealCanvas />
       <div className="relative z-10 text-center text-foreground px-4 pointer-events-none max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-headline font-bold mb-4 opacity-0 animate-fade-in [animation-delay:200ms]">
-          {dict.title}
-        </h1>
-        <p className="text-lg md:text-xl font-body opacity-0 animate-fade-in [animation-delay:400ms]">
-          {dict.subtitle}
-        </p>
-        <p className="text-lg md:text-xl font-body mt-6 opacity-0 animate-fade-in [animation-delay:600ms]">
+        <h1 className="text-4xl md:text-5xl font-headline font-bold mb-4 min-h-[180px] md:min-h-[144px]">
           {typedText}
           <span className="typing-cursor">|</span>
-        </p>
+        </h1>
       </div>
     </main>
   );
