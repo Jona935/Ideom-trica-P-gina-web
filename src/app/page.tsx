@@ -38,7 +38,7 @@ export default function Home() {
       <div className="absolute top-4 left-4 z-10 flex items-center space-x-4">
         <Image src="/logo4.png" alt="Logo" width={100} height={150} />
         <div className="text-foreground">
-      <p className="font-headline text-4xl font-bold tracking-widest">Ideo</p>
+          <p className="font-headline text-4xl font-bold tracking-widest">Ideo</p>
           <p className="font-headline text-4xl font-bold tracking-widest">mētrica</p>
         </div>
       </div>
