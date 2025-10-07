@@ -88,7 +88,7 @@
 
 @layer components {
   .typing-cursor {
-    @apply inline-block ml-1 text-inherit;
+    @apply inline-block ml-1 font-bold text-inherit;
     animation: blink-cursor 0.75s step-end infinite;
   }
 }
