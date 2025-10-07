@@ -1,38 +1,24 @@
 "use client";
 
 import * as React from "react";
-import { Languages } from "lucide-react";
-
 import { useLanguage } from "@/context/language-context";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export function LanguageSwitcher() {
-  const { setLocale } = useLanguage();
+  const { locale, setLocale } = useLanguage();
+
+  const toggleLocale = () => {
+    if (locale === "en") {
+      setLocale("es-MX");
+    } else {
+      setLocale("en");
+    }
+  };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Languages className="h-[1.2rem] w-[1.2rem]" />
-          <span className="sr-only">Change language</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setLocale("en")}>
-          <span className="w-5 h-5 mr-2 flex items-center justify-center text-xs border border-foreground rounded-sm group-focus:border-white">EN</span>
-          English
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLocale("es-MX")}>
-          <span className="w-5 h-5 mr-2 flex items-center justify-center text-xs border border-foreground rounded-sm group-focus:border-white">ES</span>
-          Español (MX)
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Button variant="ghost" size="icon" onClick={toggleLocale} className="w-10 h-10 border border-transparent hover:border-white rounded-md text-sm font-medium">
+      {locale === "en" ? "US" : "MX"}
+      <span className="sr-only">Change language</span>
+    </Button>
   );
 }
