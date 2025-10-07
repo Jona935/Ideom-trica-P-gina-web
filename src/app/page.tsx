@@ -36,10 +36,10 @@ export default function Home() {
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
       <div className="absolute top-4 left-4 z-10 flex items-center space-x-2 md:space-x-4">
-        <Image src="/logo4.png" alt="Logo" width={80} height={120} className="md:w-[100px] md:h-[150px]" />
+        <Image src="/logo4.png" alt="Logo" width={75} height={75} className="md:w-[75px] md:h-[75px]" />
         <div className="text-foreground">
-          <p className="font-headline text-lg md:text-xl font-bold tracking-widest">ARQ Y CO</p>
-          <p className="font-headline text-xs md:text-sm tracking-widest">DESIGN STUDIO</p>
+          <p className="font-headline text-2xl md:text-4xl font-bold tracking-widest">Ideo</p>
+          <p className="font-headline text-2xl md:text-4xl font-bold tracking-widest">mētrica </p>
         </div>
       </div>
       <div className="absolute top-4 right-4 z-10">
