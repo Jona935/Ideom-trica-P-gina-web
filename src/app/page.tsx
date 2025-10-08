@@ -49,7 +49,7 @@ export default function Home() {
   }, [fullText]);
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 md:px-32">
       <div className="absolute top-4 left-4 z-10 flex items-center space-x-2 md:space-x-4">
         <Image src="/logo4.png" alt="Logo" width={75} height={75} className="md:w-[100px] md:h-[100px]" />
         <div className="text-foreground">
@@ -61,7 +61,7 @@ export default function Home() {
         <LanguageSwitcher />
       </div>
       <EtherealCanvas />
-      <div className="relative z-10 justify-center text-center text-foreground pointer-events-none mx-auto max-w-4xl">
+      <div className="relative z-10 justify-center text-center text-foreground pointer-events-none">
         <h1 className="text-xl md:text-4xl font-headline font-bold mb-4 pt-16">
           {typedText}
           <span className="typing-cursor">|</span>
