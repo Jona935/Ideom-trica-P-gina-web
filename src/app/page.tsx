@@ -60,10 +60,10 @@ export default function Home() {
       <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[150px] md:h-[150px] flext-center pt-5 rotate-[-0.785398163rad] md:rotate-0" />
 
       <footer className="absolute bottom-4 left-0 right-0 z-10 w-full px-4 py-4">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center text-foreground md:text-xl md:text-sm space-y-2 md:space-y-0">
-            <a href="https://wa.me/8444609592" target="_blank" rel="noopener noreferrer" className="hover:underline">844 460 95 92</a>
-            <a href="https://maps.app.goo.gl/EXNN1qBdzxh4VsoJ7" target="_blank" rel="noopener noreferrer" className="text-center md:text-center hover:underline">Matamoros 216, Zona Centro, 25790 Monclova, Coah. MX</a>
-            <a href="mailto:Hola@Ideomētrica.com" className="hover:underline">Hola@Ideomētrica.com</a>
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center text-foreground text-sm md:text-base space-y-2 md:space-y-0">
+            <a href="https://wa.me/8444609592" target="_blank" rel="noopener noreferrer" className="hover:underline whitespace-nowrap text-center">844 460 95 92</a>
+            <a href="https://maps.app.goo.gl/EXNN1qBdzxh4VsoJ7" target="_blank" rel="noopener noreferrer" className="text-center hover:underline">Matamoros 216, Zona Centro, 25790 Monclova, Coah. MX</a>
+            <a href="mailto:Hola@Ideomētrica.com" className="hover:underline text-center">Hola@Ideomētrica.com</a>
         </div>
       </footer>
     </main>
