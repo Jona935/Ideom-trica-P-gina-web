@@ -12,13 +12,13 @@ export default function Home() {
   const dict = getDictionary(locale);
 
   const fullTextEn = "Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.";
-  const fullTextEs = "Estudio de Diseño Enfocado en arquitectura, interiorismo, construcción, avalúo inmobiliario y todo lo Creativo, liderando el territorio de México y noreste.";
+  const fullTextEs = "Estudio de Diseño Enfocado en arquitectura, interiorismo, construcción, avalúo inmobiliario y todo lo Creativo, liderando el territorio de México y el noreste.";
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 md:px-32">
       <div className="absolute top-4 left-4 z-10 flex items-center">
         <Image src="/logo4.png" alt="Logo" width={65} height={76} className="md:w-[100px] md:h-[100px]" />
-        <div className="text-foreground">
+        <div className="text-foreground ml-2">
           <p className="font-headline text-xl lg:text-4xl font-bold tracking-widest">Ideo</p>
           <p className="font-headline text-xl lg:text-4xl font-bold tracking-wider">mētrica</p>
         </div>
@@ -28,19 +28,19 @@ export default function Home() {
       </div>
       <EtherealCanvas />
       <div className="relative z-10 justify-center text-center text-foreground pointer-events-none">
-        <h1 className="text-2xl lg:text-4xl font-headline font-bold mt-[5rem] md:mt-[10rem] h-32 lg:h-24">
+        <h1 className="md:px-[10rem] text-2xl lg:text-4xl font-headline font-bold mt-[1rem] md:mt-[10rem] h-32 lg:h-24">
            <TypeIt
               key={locale}
               options={{
                 strings: [locale === 'en' ? fullTextEn : fullTextEs],
-                speed: 110,
+                speed: 90,
                 waitUntilVisible: true,
                 cursorChar: "<span class='typing-cursor'>|</span>",
               }}
             />
         </h1>
         <h2
-          className="mt-6 text-md md:text-2xl font-light animate-fade-in"
+          className="mt-[10rem] sm:mt-12 text-lg md:text-2xl font-light animate-fade-in"
           dangerouslySetInnerHTML={{ __html: dict.workInProgress }}
         />
         
