@@ -46,8 +46,8 @@ export default function Home() {
         <LanguageSwitcher />
       </div>
       <EtherealCanvas />
-      <div className="relative z-10 text-center text-foreground px-4 pointer-events-none max-w-4xl mx-auto">
-        <h1 className="text-2xl md:text-5xl font-headline font-bold mb-4 min-h-[140px] md:min-h-[240px]">
+      <div className="relative z-10 justify-center text-center text-foreground px-4 pointer-events-none w-full mx-auto md:pt-[4rem]">
+        <h1 className="text-2xl md:text-5xl font-headline font-bold mb-4 md:px-[8rem] xl:px-[12rem]">
           {typedText}
           <span className="typing-cursor">|</span>
         </h1>
@@ -57,13 +57,13 @@ export default function Home() {
         />
         
       </div>
-      <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[150px] md:h-[150px] flext-center pt-5 rotate-[-0.785398163rad] md:rotate-0" />
+      <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[120px] md:h-[120px] flext-center my-[3rem] rotate-[-0.785398163rad] md:rotate-0" />
 
-      <footer className="relative z-10 w-full pt-[4rem]">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center text-foreground text-base md:text-lg space-y-4 md:space-y-0 md:space-x-4">
+      <footer className="relative z-10 w-full ">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-foreground font-bold text-lg md:text-xl space-y-4 md:space-y-0 md:space-x-4">
             <a href="https://wa.me/8444609592" target="_blank" rel="noopener noreferrer" className="hover:underline whitespace-nowrap text-center">844 460 95 92</a>
             <a href="https://maps.app.goo.gl/EXNN1qBdzxh4VsoJ7" target="_blank" rel="noopener noreferrer" className="text-center hover:underline">Matamoros 216, Zona Centro, 25790 Monclova, Coah. MX</a>
-            <a href="mailto:Hola@Ideomētrica.com" className="hover:underline text-center">Hola@Ideomētrica.com</a>
+            <a href="mailto:Hola@Ideomētrica.com" className=" hover:underline text-center">Hola@Ideomētrica.com</a>
         </div>
       </footer>
     </main>
