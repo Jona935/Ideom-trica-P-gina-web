@@ -28,7 +28,7 @@ export default function Home() {
       </div>
       <EtherealCanvas />
       <div className="relative z-10 justify-center text-center text-foreground pointer-events-none">
-        <h1 className="md:px-[10rem] text-2xl lg:text-4xl font-headline font-bold mt-[1rem] md:mt-[10rem] h-32 lg:h-24">
+        <h1 className="md:px-[10rem] text-2xl lg:text-4xl font-headline font-bold mt-[1rem] md:mt-[10rem] h-[12rem]">
            <TypeIt
               key={locale}
               options={{
