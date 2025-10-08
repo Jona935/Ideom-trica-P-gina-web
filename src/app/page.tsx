@@ -11,7 +11,6 @@ export default function Home() {
   const { locale } = useLanguage();
   const dict = getDictionary(locale);
   const [typedText, setTypedText] = useState("");
-  const [typingFinished, setTypingFinished] = useState(false);
   
   const fullTextEn = "Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.";
   const fullTextEs = "Estudio de Diseño Enfocado en arquitectura, interiorismo, construcción, avalúo inmobiliario y todo lo Creativo, liderando el territorio de México y noreste.";
@@ -20,7 +19,6 @@ export default function Home() {
 
   useEffect(() => {
     setTypedText('');
-    setTypingFinished(false);
     let i = 0;
     const typingInterval = setInterval(() => {
       if (i < fullText.length) {
@@ -28,7 +26,6 @@ export default function Home() {
         i++;
       } else {
         clearInterval(typingInterval);
-        setTypingFinished(true);
       }
     }, 100);
 
@@ -54,12 +51,10 @@ export default function Home() {
           {typedText}
           <span className="typing-cursor">|</span>
         </h1>
-        {typingFinished && (
-           <h2
-            className="text-lg md:text-xl font-light opacity-0 animate-fade-in"
-            dangerouslySetInnerHTML={{ __html: dict.workInProgress }}
-          />
-        )}
+        <h2
+          className="text-lg md:text-xl font-light"
+          dangerouslySetInnerHTML={{ __html: dict.workInProgress }}
+        />
       </div>
     </main>
   );
