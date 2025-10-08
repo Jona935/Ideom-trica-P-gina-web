@@ -3,7 +3,7 @@ import './globals.css';
 import { LanguageProvider } from '@/context/language-context';
 
 export const metadata: Metadata = {
-  title: 'Ideomētrica',
+  title: '©Ideomētrica',
   description: 'Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.',
 };
 
