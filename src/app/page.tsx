@@ -33,9 +33,11 @@ export default function Home() {
       }
     };
     
+    // Start typing after a short delay
     const initialTimeoutId = setTimeout(startTyping, 100);
 
     return () => {
+      // Cleanup timeouts on component unmount or when fullText changes
       clearTimeout(initialTimeoutId);
       if (typingIntervalRef.current) {
         clearTimeout(typingIntervalRef.current);
