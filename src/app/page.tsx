@@ -19,7 +19,7 @@ export default function Home() {
   const fullText = locale === 'en' ? fullTextEn : fullTextEs;
 
   useEffect(() => {
-    setTypedText('');
+    setTypedText(''); 
     if (typingIntervalRef.current) {
       clearInterval(typingIntervalRef.current);
     }
@@ -28,7 +28,7 @@ export default function Home() {
     const startTyping = () => {
       typingIntervalRef.current = setInterval(() => {
         if (i < fullText.length) {
-          setTypedText(fullText.substring(0, i + 1));
+          setTypedText((prev) => prev + fullText.charAt(i));
           i++;
         } else {
           if (typingIntervalRef.current) {
@@ -37,9 +37,8 @@ export default function Home() {
         }
       }, 100);
     };
-
-    // Use a short timeout to ensure the state is reset before starting a new interval
-    const timeoutId = setTimeout(startTyping, 0);
+    
+    const timeoutId = setTimeout(startTyping, 100);
 
     return () => {
       clearTimeout(timeoutId);
@@ -63,7 +62,7 @@ export default function Home() {
       </div>
       <EtherealCanvas />
       <div className="relative z-10 justify-center text-center text-foreground pointer-events-none mx-auto max-w-4xl">
-        <h1 className="text-xl md:text-5xl font-headline font-bold mb-4 pt-16 md:pt-0">
+        <h1 className="text-xl md:text-4xl font-headline font-bold mb-4 pt-16">
           {typedText}
           <span className="typing-cursor">|</span>
         </h1>
