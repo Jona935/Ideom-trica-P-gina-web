@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { LanguageProvider } from '@/context/language-context';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: '©Ideomētrica',
@@ -20,6 +21,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
+        <Analytics />
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
