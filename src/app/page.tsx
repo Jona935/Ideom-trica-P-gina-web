@@ -50,19 +50,19 @@ export default function Home() {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 md:px-32">
-      <div className="absolute top-4 left-4 z-10 flex items-center space-x-2 md:space-x-4">
-        <Image src="/logo4.png" alt="Logo" width={75} height={75} className="md:w-[100px] md:h-[100px]" />
+      <div className="absolute top-4 left-4 z-10 flex items-center">
+        <Image src="/logo4.png" alt="Logo" width={65} height={76} className="md:w-[100px] md:h-[100px]" />
         <div className="text-foreground">
-          <p className="font-headline text-2xl md:text-4xl font-bold tracking-widest">Ideo</p>
-          <p className="font-headline text-2xl md:text-4xl font-bold tracking-wider">mētrica</p>
+          <p className="font-headline text-xl lg:text-4xl font-bold tracking-widest">Ideo</p>
+          <p className="font-headline text-xl lg:text-4xl font-bold tracking-wider">mētrica</p>
         </div>
       </div>
       <div className="absolute top-4 right-4 z-10">
         <LanguageSwitcher />
       </div>
       <EtherealCanvas />
-      <div className="relative z-10 justify-center text-center text-foreground pointer-events-none">
-        <h1 className="text-xl md:text-4xl font-headline font-bold mb-4 pt-16">
+      <div className="relative md:px-[10rem] z-10 justify-center text-center text-foreground pointer-events-none">
+        <h1 className="text-xl lg:text-4xl font-headline font-bold mb-0 mt-[5rem] md:mt-[10rem]">
           {typedText}
           <span className="typing-cursor">|</span>
         </h1>
@@ -72,13 +72,13 @@ export default function Home() {
         />
         
       </div>
-      <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[120px] md:h-[120px] flext-center my-[1rem] md:my-[3rem] rotate-[-0.785398163rad] md:rotate-0" />
+      <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[120px] md:h-[120px] flex-center my-[1rem] md:my-[3rem] rotate-[-0.785398163rad] md:rotate-0" />
 
-      <footer className="relative z-10 w-full mt-2">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-foreground font-bold text-lg md:text-xl space-y-4 md:space-y-0 md:space-x-4">
-            <a href="https://wa.me/8444609592" target="_blank" rel="noopener noreferrer" className="hover:underline whitespace-nowrap text-center">844 460 95 92</a>
-            <a href="https://maps.app.goo.gl/EXNN1qBdzxh4VsoJ7" target="_blank" rel="noopener noreferrer" className="text-center hover:underline">Matamoros 216, Zona Centro, 25790 Monclova, Coah. MX</a>
-            <a href="mailto:Hola@Ideomētrica.com" className=" hover:underline text-center">Hola@Ideomētrica.com</a>
+      <footer className="w-full">
+        <div className="w-full max-w-[91%] flex items-center justify-between mx-auto uppercase text-[15px] lg:text-[1.1rem] tracking-[0.5px] text-center">
+            <a href="https://wa.me/8444609592" target="_blank" rel="noopener noreferrer" className=" hover:underline whitespace-nowrap">844 460 95 92</a>
+            <a href="https://maps.app.goo.gl/EXNN1qBdzxh4VsoJ7" target="_blank" rel="noopener noreferrer" className=" hover:underline">Matamoros 216, Zona Centro, 25790 Monclova, Coah. MX</a>
+            <a href="mailto:Hola@Ideomētrica.com" className=" hover:underline">Hola@Ideomētrica.com</a>
         </div>
       </footer>
     </main>
