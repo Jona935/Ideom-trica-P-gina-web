@@ -22,7 +22,7 @@ export default function Home() {
     let i = 0;
     const typingInterval = setInterval(() => {
       if (i < fullText.length) {
-        setTypedText((prev) => prev + fullText.charAt(i));
+        setTypedText(fullText.substring(0, i + 1));
         i++;
       } else {
         clearInterval(typingInterval);
