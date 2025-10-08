@@ -52,7 +52,7 @@ export default function Home() {
           <span className="typing-cursor">|</span>
         </h1>
         <h2
-          className="text-lg md:text-2xl font-light animate-fade-in"
+          className="mt-6 text-lg md:text-2xl font-light animate-fade-in"
           dangerouslySetInnerHTML={{ __html: dict.workInProgress }}
         />
         
