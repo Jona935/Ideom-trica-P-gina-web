@@ -22,7 +22,7 @@ export default function Home() {
     let i = 0;
     const typingInterval = setInterval(() => {
       if (i < fullText.length) {
-        setTypedText(fullText.substring(0, i + 1));
+        setTypedText((prev) => prev + fullText.charAt(i));
         i++;
       } else {
         clearInterval(typingInterval);
@@ -58,6 +58,14 @@ export default function Home() {
         
       </div>
       <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[100px] md:h-[100px] flext-center pt-5" />
+
+      <footer className="absolute bottom-4 left-0 right-0 z-10 w-full px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto text-foreground text-xs md:text-sm space-y-2 md:space-y-0">
+            <a href="tel:8444609592" className="hover:underline">844 460 95 92</a>
+            <p className="text-center md:text-center">Matamoros 216, Zona Centro, 25790 Monclova, Coah. MX</p>
+            <a href="mailto:Hola@Ideomētrica.com" className="hover:underline">Hola@Ideomētrica.com</a>
+        </div>
+      </footer>
     </main>
   );
 }
