@@ -57,7 +57,7 @@ export default function Home() {
         />
         
       </div>
-      <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[120px] md:h-[120px] flext-center my-[3rem] rotate-[-0.785398163rad] md:rotate-0" />
+      <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[120px] md:h-[120px] flext-center my-[1rem] rotate-[-0.785398163rad] md:rotate-0" />
 
       <footer className="relative z-10 w-full ">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-foreground font-bold text-lg md:text-xl space-y-4 md:space-y-0 md:space-x-4">
