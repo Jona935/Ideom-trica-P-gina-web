@@ -62,7 +62,7 @@ export default function Home() {
         <LanguageSwitcher />
       </div>
       <EtherealCanvas />
-      <div className="relative z-10 justify-center text-center text-foreground px-4 pointer-events-none w-full mx-auto md:pt-[4rem]">
+      <div className="relative z-10 justify-center text-center text-foreground pointer-events-none mx-auto max-w-4xl">
         <h1 className="text-xl md:text-5xl font-headline font-bold mb-4 pt-16 md:pt-0">
           {typedText}
           <span className="typing-cursor">|</span>
