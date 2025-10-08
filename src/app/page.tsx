@@ -47,17 +47,17 @@ export default function Home() {
       </div>
       <EtherealCanvas />
       <div className="relative z-10 justify-center text-center text-foreground px-4 pointer-events-none w-full mx-auto md:pt-[4rem]">
-        <h1 className="text-2xl md:text-5xl font-headline font-bold mb-4 md:px-[8rem] xl:px-[12rem]">
+        <h1 className="text-xl md:text-5xl font-headline font-bold mb-4 md:px-[8rem] xl:px-[12rem]">
           {typedText}
           <span className="typing-cursor">|</span>
         </h1>
         <h2
-          className="mt-6 text-lg md:text-2xl font-light animate-fade-in"
+          className="mt-6 text-md md:text-2xl font-light animate-fade-in"
           dangerouslySetInnerHTML={{ __html: dict.workInProgress }}
         />
         
       </div>
-      <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[120px] md:h-[120px] flext-center my-[1rem] rotate-[-0.785398163rad] md:rotate-0" />
+      <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="md:w-[120px] md:h-[120px] flext-center my-[1rem] md:my-[3rem] rotate-[-0.785398163rad] md:rotate-0" />
 
       <footer className="relative z-10 w-full ">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-foreground font-bold text-lg md:text-xl space-y-4 md:space-y-0 md:space-x-4">
