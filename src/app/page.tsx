@@ -62,7 +62,7 @@ export default function Home() {
       <footer className="absolute bottom-4 left-0 right-0 z-10 w-full px-4">
         <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto text-foreground text-xs md:text-sm space-y-2 md:space-y-0">
             <a href="https://wa.me/8444609592" target="_blank" rel="noopener noreferrer" className="hover:underline">844 460 95 92</a>
-            <p className="text-center md:text-center">Matamoros 216, Zona Centro, 25790 Monclova, Coah. MX</p>
+            <a href="https://maps.app.goo.gl/EXNN1qBdzxh4VsoJ7" target="_blank" rel="noopener noreferrer" className="text-center md:text-center hover:underline">Matamoros 216, Zona Centro, 25790 Monclova, Coah. MX</a>
             <a href="mailto:Hola@Ideomētrica.com" className="hover:underline">Hola@Ideomētrica.com</a>
         </div>
       </footer>
