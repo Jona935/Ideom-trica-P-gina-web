@@ -1,49 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
 import { EtherealCanvas } from "@/components/ethereal-canvas";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useLanguage } from "@/context/language-context";
 import { getDictionary } from "@/lib/dictionaries";
+import TypeIt from "typeit-react";
 
 export default function Home() {
   const { locale } = useLanguage();
   const dict = getDictionary(locale);
-  const [typedText, setTypedText] = useState("");
-  const typingIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const fullTextEn = "Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.";
   const fullTextEs = "Estudio de Diseño Enfocado en arquitectura, interiorismo, construcción, avalúo inmobiliario y todo lo Creativo, liderando el territorio de México y noreste.";
-
-  const fullText = locale === 'en' ? fullTextEn : fullTextEs;
-
-  useEffect(() => {
-    setTypedText(''); 
-    if (typingIntervalRef.current) {
-      clearInterval(typingIntervalRef.current);
-    }
-
-    let i = 0;
-    const startTyping = () => {
-      if (i < fullText.length) {
-        setTypedText((prev) => prev + fullText.charAt(i));
-        i++;
-        typingIntervalRef.current = setTimeout(startTyping, 100);
-      }
-    };
-    
-    // Start typing after a short delay
-    const initialTimeoutId = setTimeout(startTyping, 100);
-
-    return () => {
-      // Cleanup timeouts on component unmount or when fullText changes
-      clearTimeout(initialTimeoutId);
-      if (typingIntervalRef.current) {
-        clearTimeout(typingIntervalRef.current);
-      }
-    };
-  }, [fullText]);
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 md:px-32">
@@ -59,9 +28,16 @@ export default function Home() {
       </div>
       <EtherealCanvas />
       <div className="relative z-10 justify-center text-center text-foreground pointer-events-none">
-        <h1 className="text-2xl lg:text-4xl lg:px-[15rem]  font-headline font-bold mb-0 mt-[5rem] md:mt-[10rem]">
-          {typedText}
-          <span className="typing-cursor">|</span>
+        <h1 className="text-2xl lg:text-4xl font-headline font-bold mt-[5rem] md:mt-[10rem] h-32 lg:h-24">
+           <TypeIt
+              key={locale}
+              options={{
+                strings: [locale === 'en' ? fullTextEn : fullTextEs],
+                speed: 110,
+                waitUntilVisible: true,
+                cursorChar: "<span class='typing-cursor'>|</span>",
+              }}
+            />
         </h1>
         <h2
           className="mt-6 text-md md:text-2xl font-light animate-fade-in"
