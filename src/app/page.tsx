@@ -40,7 +40,7 @@ export default function Home() {
             />
         </h1>
         <h2
-          className="mt-[10rem] sm:mt-12 text-lg md:text-2xl font-light animate-fade-in"
+          className="md:mt-[10rem] sm:mt-12 text-lg md:text-2xl font-light animate-fade-in"
           dangerouslySetInnerHTML={{ __html: dict.workInProgress }}
         />
         
