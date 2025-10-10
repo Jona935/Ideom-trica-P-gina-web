@@ -11,7 +11,7 @@ export default function Home() {
   const { locale } = useLanguage();
   const dict = getDictionary(locale);
 
-  const fullTextEn = "Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.";
+  const fullTextEn = "Creative architecture studio driving design, construction, interior design, and appraisal projects in the northeast and throughout Mexico.";
   const fullTextEs = "Estudio creativo de arquitectura que impulsa proyectos de diseño, construcción, interiorismo y avalúo en el noreste y a lo largo de México.";
 
   return (
@@ -28,7 +28,7 @@ export default function Home() {
       </div>
       <EtherealCanvas />
       <div className="relative z-10 justify-center text-center text-foreground pointer-events-none">
-        <h1 className="lg:px-[10rem] md:px-[4rem] text-2xl md:text-4xl font-headline font-bold mt-[1rem] md:mt-[10rem] h-[12rem]">
+        <h1 className="lg:px-[10rem] md:px-[4rem] text-2xl md:text-4xl font-headline font-bold mt-[1rem] md:mt-[10rem] h-[12rem] pt-16">
            <TypeIt
               key={locale}
               options={{

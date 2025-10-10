@@ -2,7 +2,7 @@ const dictionaries = {
   en: {
     title: "Ethereal Canvas",
     subtitle: "Move your cursor to paint.",
-    description: " Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.",
+    description: "Creative architecture studio driving design, construction, interior design, and appraisal projects in the northeast and throughout Mexico.",
     workInProgress: "We are working on our new digital identity. <br>In the meantime, let's talk!"
   },
   "es-MX": {
