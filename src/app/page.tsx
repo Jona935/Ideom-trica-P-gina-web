@@ -28,7 +28,7 @@ export default function Home() {
       </div>
       <EtherealCanvas />
       <div className="relative z-10 justify-center text-center text-foreground pointer-events-none">
-        <h1 className="lg:px-[10rem] md:px-[4rem] text-2xl md:text-4xl font-headline font-bold mt-[1rem] md:mt-[10rem] h-[12rem] pt-16">
+        <h1 className="md:px-[15rem] text-2xl md:text-4xl font-headline font-bold mt-[7rem] md:mt-[10rem] h-[12rem]">
            <TypeIt
               key={locale}
               options={{
@@ -40,7 +40,7 @@ export default function Home() {
             />
         </h1>
         <h2
-          className="md:mt-[10rem] mt-[1.5rem] sm:mt-12 text-lg md:text-2xl font-light animate-fade-in"
+          className="md:mt-[10rem] text-lg md:text-2xl font-light animate-fade-in"
           dangerouslySetInnerHTML={{ __html: dict.workInProgress }}
         />
         
