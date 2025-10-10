@@ -12,7 +12,7 @@ export default function Home() {
   const dict = getDictionary(locale);
 
   const fullTextEn = "Design Studio Focused on architecture, interior, construction, real Estate appraisal and all things Creative, leading the lenghts of México and northeast.";
-  const fullTextEs = "Estudio de Diseño Enfocado en arquitectura, interiorismo, construcción, avalúo inmobiliario y todo lo Creativo, liderando el territorio de México y el noreste.";
+  const fullTextEs = "Estudio creativo de arquitectura que impulsa proyectos de diseño, construcción, interiorismo y avalúo en el noreste y a lo largo de México.";
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 md:px-32">

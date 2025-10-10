@@ -8,7 +8,7 @@ const dictionaries = {
   "es-MX": {
     title: "Lienzo Etéreo",
     subtitle: "Mueve tu cursor para pintar.",
-    description: " Estudio de Diseño Enfocado en arquitectura, interiorismo, construcción, avalúo inmobiliario y todo lo Creativo, liderando el territorio de México y noreste.",
+    description: "Estudio creativo de arquitectura que impulsa proyectos de diseño, construcción, interiorismo y avalúo en el noreste y a lo largo de México.",
     workInProgress: "Estamos trabajando en nuestra nueva identidad digital. <br>Mientras tanto, ¡conversemos!"
   },
 };
