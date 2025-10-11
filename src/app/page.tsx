@@ -25,7 +25,7 @@ export default function Home() {
             <p className="font-headline text-xl lg:text-4xl font-bold tracking-wider">mētrica</p>
           </div>
         </a>
-        <div className="flex gap-2 mt-2 ml-2">
+        <div className="flex flex-col gap-2 mt-2 ml-2">
             <a href="https://www.facebook.com/share/1Jvno9tCqU/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-white/80">
               <Facebook size={24} />
             </a>
