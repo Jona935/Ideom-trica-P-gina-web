@@ -16,7 +16,7 @@ export default function Home() {
   const fullTextEs = "Estudio creativo de arquitectura que impulsa proyectos de diseño, construcción, interiorismo y avalúo en el noreste y a lo largo de México.";
 
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center justify-start gap-5 overflow-hidden p-4 md:px-8">
+    <main className="relative flex min-h-screen w-full flex-col items-center justify-start gap-4 overflow-hidden p-4 md:px-8">
       <EtherealCanvas />
 
       {/* --- Item 1: Header --- */}
@@ -29,7 +29,7 @@ export default function Home() {
               <p className="font-headline text-xl font-bold tracking-wider lg:text_4xl">mētrica</p>
             </div>
           </a>
-          <div className="flex gap-2 md:ml-2">
+          <div className="flex md:flex-col  gap-2 md:ml-2">
             <a href="https://www.facebook.com/share/1Jvno9tCqU/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-white/80">
               <Facebook size={30} />
             </a>
@@ -42,8 +42,8 @@ export default function Home() {
       </header>
 
       {/* --- Item 2: Main Content --- */}
-      <div className="pointer-events-none relative z-10 flex w-full flex-grow flex-col items-center justify-center text-center text-foreground md:w-3/4">
-        <h1 className="h-[15rem] w-full font-headline text-2xl font-bold md:text-4xl">
+      <div className="pointer-events-none relative z-10 flex w-[80%] flex-grow flex-col items-center justify-center text-center text-foreground md:w-[65%]">
+        <h1 className="h-[100%] w-full font-headline text-2xl font-bold md:text-4xl">
            <TypeIt
               key={locale}
               options={{
@@ -55,10 +55,10 @@ export default function Home() {
             />
         </h1>
         <h2
-          className="animate-fade-in text-lg font-light md:mt-[2rem] md:text-2xl"
+          className="animate-fade-in text-lg font-light mt-2 md:mt-[2rem] md:text-2xl"
           dangerouslySetInnerHTML={{ __html: dict.workInProgress }}
         />
-        <Image src="/arrow.svg" alt="Logo" width={75} height={75} className="flex-center my-[1rem] rotate-[-0.785398163rad] md:my-[3rem] md:h-[120px] md:w-[120px] md:rotate-0" />
+        <Image src="/arrow.svg" alt="Logo" width={55} height={55} className="flex-center my-[1rem] rotate-[-0.785398163rad] md:my-[3rem] md:h-[120px] md:w-[120px] md:rotate-0" />
       </div>
       
       {/* --- Item 3: Footer --- */}
