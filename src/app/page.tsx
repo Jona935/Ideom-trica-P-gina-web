@@ -21,7 +21,7 @@ export default function Home() {
 
       {/* --- Item 1: Header --- */}
       <header className="z-10 flex w-full items-start justify-between">
-        <div className="flex items-start gap-4">
+        <div className="flex flex-col items-start gap-4">
           <a href="https://www.xn--ideomtrica-mlb.com/" className="flex items-center">
             <Image src="/logo4.png" alt="Logo" width={65} height={76} className="md:w-[100px] md:h-[100px]" />
             <div className="ml-2 text-foreground">
@@ -29,7 +29,7 @@ export default function Home() {
               <p className="font-headline text-xl font-bold tracking-wider lg:text_4xl">mētrica</p>
             </div>
           </a>
-          <div className="mt-2 flex gap-2 md:ml-2 md:flex-col">
+          <div className="flex gap-2 md:ml-2">
             <a href="https://www.facebook.com/share/1Jvno9tCqU/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-white/80">
               <Facebook size={30} />
             </a>
