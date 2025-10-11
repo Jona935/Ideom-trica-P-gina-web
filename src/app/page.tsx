@@ -16,7 +16,7 @@ export default function Home() {
   const fullTextEs = "Estudio creativo de arquitectura que impulsa proyectos de diseño, construcción, interiorismo y avalúo en el noreste y a lo largo de México.";
 
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center justify-start gap-4 overflow-hidden p-4 md:px-8">
+    <main className="relative flex min-h-screen w-full flex-col items-center justify-start gap-3 overflow-hidden p-4 md:px-8">
       <EtherealCanvas />
 
       {/* --- Item 1: Header --- */}
@@ -42,7 +42,7 @@ export default function Home() {
       </header>
 
       {/* --- Item 2: Main Content --- */}
-      <div className="pointer-events-none relative z-10 flex w-[80%] flex-grow flex-col items-center justify-center text-center text-foreground md:w-[65%]">
+      <div className="mt-[2rem] pointer-events-none relative z-10 flex w-[85%] flex-grow flex-col items-center justify-start text-center text-foreground md:w-[45%]">
         <h1 className="h-[100%] w-full font-headline text-2xl font-bold md:text-4xl">
            <TypeIt
               key={locale}
@@ -58,12 +58,12 @@ export default function Home() {
           className="animate-fade-in text-lg font-light mt-2 md:mt-[2rem] md:text-2xl"
           dangerouslySetInnerHTML={{ __html: dict.workInProgress }}
         />
-        <Image src="/arrow.svg" alt="Logo" width={55} height={55} className="flex-center my-[1rem] rotate-[-0.785398163rad] md:my-[3rem] md:h-[120px] md:w-[120px] md:rotate-0" />
+        <Image src="/arrow.svg" alt="Logo" width={55} height={55} className="flex-center my-[1rem] rotate-[-0.785398163rad] md:mt-[5rem] md:h-[120px] md:w-[120px] md:rotate-0" />
       </div>
       
       {/* --- Item 3: Footer --- */}
       <footer className="z-10 w-full">
-        <div className="mx-auto flex w-full max-w-[91%] flex-col items-center justify-between space-y-2 text-center text-[13px] font-bold uppercase tracking-[0.5px] lg:flex-row lg:space-y-0 lg:text-base lg:space-x-4">
+        <div className="mb-[5rem] md:mb-0 mx-auto flex w-full max-w-[91%] flex-col items-center justify-between space-y-2 text-center text-[13px] font-bold uppercase tracking-[0.5px] lg:flex-row lg:space-y-0 lg:text-base lg:space-x-4">
             <a href="mailto:Hola@Ideomētrica.com" className=" hover:underline">Hola@Ideomētrica.com</a>
             <a href="https://maps.app.goo.gl/EXNN1qBdzxh4VsoJ7" target="_blank" rel="noopener noreferrer" className=" hover:underline">Matamoros 216, Zona Centro, 25790 Monclova, Coah. MX</a>
             <a href="https://wa.me/8444609592" target="_blank" rel="noopener noreferrer" className=" hover:underline whitespace-nowrap">                             +52 844 460 95 92</a>
